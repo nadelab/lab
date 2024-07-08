@@ -20,7 +20,7 @@ hubble:
       - icmp
       - http
   relay:
-    enabled: false
+    enabled: true
     rollOutPods: true
   ui:
     enabled: true
