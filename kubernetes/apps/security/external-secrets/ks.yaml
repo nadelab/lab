@@ -1,17 +1,17 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: kube-system-cilium
+  name: external-secrets-controller
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/kube-system/cilium/app
-  targetNamespace: kube-system
+  path: ./kubernetes/apps/security/external-secrets/app
+  targetNamespace: security
   sourceRef:
     kind: GitRepository
     name: flux-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: cilium
+      app.kubernetes.io/name: external-secrets
   prune: false
   wait: true
   interval: 10m
