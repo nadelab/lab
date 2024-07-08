@@ -1,0 +1,26 @@
+k8sServiceHost: "5.161.199.0"
+k8sServicePort: 6443
+rollOutCiliumPods: true
+localRedirectPolicy: true
+hubble:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+  metrics:
+    enabled:
+      - dns:query;ignoreAAAA
+      - drop
+      - tcp
+      - udp
+      - flow
+      - port-distribution
+      - icmp
+      - http
+  relay:
+    enabled: false
+    rollOutPods: true
+  ui:
+    enabled: true
+    rollOutPods: true
+    ingress:
+      enabled: false
