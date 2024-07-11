@@ -5,7 +5,6 @@ rollOutCiliumPods: true
 localRedirectPolicy: true
 loadBalancer:
   mode: dsr
-  dsrDispatch: opt
   algorithm: maglev
 hubble:
   enabled: true
