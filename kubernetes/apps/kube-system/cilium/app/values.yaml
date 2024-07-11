@@ -5,7 +5,8 @@ rollOutCiliumPods: true
 localRedirectPolicy: true
 ipv4NativeRoutingCIDR: 10.244.0.0/24
 enableIPv4Masquerade: true
-autoDirectNodeRoutes: true
+bpf:
+  masquerade: true
 
 routingMode: native
 loadBalancer:
