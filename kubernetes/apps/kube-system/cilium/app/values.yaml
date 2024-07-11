@@ -8,7 +8,7 @@ loadBalancer:
   dsrDispatch: opt
   algorithm: maglev
 hubble:
-  enabled: false
+  enabled: true
   serviceMonitor:
     enabled: true
   metrics:
@@ -22,10 +22,10 @@ hubble:
       - icmp
       - http
   relay:
-    enabled: false
+    enabled: true
     rollOutPods: true
   ui:
-    enabled: false
+    enabled: true
     rollOutPods: true
     ingress:
       enabled: false
