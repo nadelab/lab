@@ -4,3 +4,7 @@ resources:
   - ./bitnami.yaml
   - ./infisical.yaml
   - ./cilium.yaml
+  - ./external-dns.yaml
+  - ./external-secrets.yaml
+  - ./sealed-secrets.yaml
+  - ./jetstack.yaml
