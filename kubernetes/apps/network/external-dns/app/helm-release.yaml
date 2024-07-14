@@ -44,4 +44,4 @@ spec:
       limits:
         memory: 250Mi
     serviceMonitor:
-      enabled: true
+      enabled: false
