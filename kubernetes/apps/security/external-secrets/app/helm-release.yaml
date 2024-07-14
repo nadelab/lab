@@ -15,7 +15,7 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
-  interval: 1m
+  interval: 30m
   values:
     installCRDs: true
     replicaCount: 1
