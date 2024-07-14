@@ -4,7 +4,7 @@ metadata:
   name: metallb-system-metallb
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/metallb-system/app
+  path: ./kubernetes/apps/metallb-system/metallb/app
   targetNamespace: metallb-system
   sourceRef:
     kind: GitRepository
@@ -22,7 +22,7 @@ metadata:
   name: metallb-system-metallb-pool
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/metallb-system/pool
+  path: ./kubernetes/apps/metallb-system/metallb/pool
   targetNamespace: metallb-system
   sourceRef:
     kind: GitRepository
@@ -40,7 +40,7 @@ metadata:
   name: metallb-system-metallb-advertisement
   namespace: flux-system
 spec:
-  path: ./kubernetes/apps/metallb-system/advertisement
+  path: ./kubernetes/apps/metallb-system/metallb/advertisement
   targetNamespace: metallb-system
   sourceRef:
     kind: GitRepository
