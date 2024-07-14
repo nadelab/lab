@@ -15,10 +15,10 @@ spec:
     crds: CreateReplace
   upgrade:
     crds: CreateReplace
-  interval: 30m
+  interval: 1m
   values:
     installCRDs: true
-    replicaCount: 2
+    replicaCount: 1
     topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
