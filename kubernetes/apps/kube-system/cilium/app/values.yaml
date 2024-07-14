@@ -1,28 +1,36 @@
 k8sServiceHost: "5.161.199.0"
 k8sServicePort: 6443
-rollOutCiliumPods: true
-localRedirectPolicy: true
+
+kubeProxyReplacement: true
+
+ipam:
+  mode: kubernetes
+  operator:
+    clusterPoolIPv4PodCIDRList: '10.244.0.0/16'
+
+ipv4NativeRoutingCIDR: '10.244.0.0/16'
+
+ingressController:
+  enabled: true
+  loadBalancerMode: shared
+  default: true
+
+loadBalancer:
+  algorithm: maglev
+
+bandwidthManager:
+  enabled: true
+
+bpf:
+  masquerade: true
+  tproxy: true
+
 hubble:
   enabled: true
-  serviceMonitor:
-    enabled: true
-  metrics:
-    enabled:
-      - dns:query;ignoreAAAA
-      - drop
-      - tcp
-      - udp
-      - flow
-      - port-distribution
-      - icmp
-      - http
   relay:
     enabled: true
-    rollOutPods: true
   ui:
     enabled: true
-    rollOutPods: true
-    ingress:
-      enabled: false
-agent:
-  sleepAfterInit: true
+
+hostFirewall:
+  enabled: true
