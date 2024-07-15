@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./cluster-issuer.yaml
   - ./external-secret.yaml
+  - ./external-secret-infisical.yaml
