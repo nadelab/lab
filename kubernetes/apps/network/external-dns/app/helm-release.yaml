@@ -20,7 +20,7 @@ spec:
     crds: CreateReplace
   values:
     deploymentAnnotations:
-      secret.reloader.stakater.com/reload: &secret external-dns-cf-secret-infisical
+      secret.reloader.stakater.com/reload: &secret external-dns-cf-secret-infisical-managed
     interval: 30s
     # logLevel: debug
     provider: cloudflare
@@ -29,6 +29,7 @@ spec:
         valueFrom:
           secretKeyRef:
             name: *secret
+            namespace: network
             key: TOKEN
     extraArgs:
       - --annotation-filter=external-dns.home.arpa/enabled in (true)
