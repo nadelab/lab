@@ -1,0 +1,11 @@
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSEndpoint
+metadata:
+  name: webhook-endpoint
+spec:
+  endpoints:
+    - dnsName: webhook.flux.lab.space.nade.me
+      recordTTL: 180
+      recordType: A
+      targets:
+        - 172.81.57.24

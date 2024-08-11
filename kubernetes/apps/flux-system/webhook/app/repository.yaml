@@ -1,0 +1,9 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: lab-repository
+spec:
+  interval: 60m
+  url: https://github.com/nadelab/lab
+  ref:
+    branch: master
