@@ -9,7 +9,6 @@ spec:
     - "push"
   secretRef:
     name: flux-webhook-secret-infisical-managed
-    key: WEBHOOK_TOKEN
   resources:
     - kind: GitRepository
       name: lab-repository
