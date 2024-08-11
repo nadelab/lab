@@ -2,6 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: webhook-receiver
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    ingress.cilium.io.loadbalancer-mode: shared
 spec:
   rules:
     - host: webhook.flux.lab.space.nade.me
