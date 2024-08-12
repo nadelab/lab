@@ -32,5 +32,10 @@ hubble:
   ui:
     enabled: true
 
+hostLegacyRouting: true
+
 hostFirewall:
+  enabled: true
+
+endpointRoutes:
   enabled: true
