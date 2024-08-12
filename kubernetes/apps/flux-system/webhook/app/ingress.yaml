@@ -6,6 +6,10 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
     ingress.cilium.io/loadbalancer-mode: shared
 spec:
+  tls:
+    - hosts:
+        - webhook.flux.lab.space.nade.me
+      secretName: flux-webhook-receiver-tls
   rules:
     - host: webhook.flux.lab.space.nade.me
       http:
