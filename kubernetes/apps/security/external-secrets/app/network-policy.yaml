@@ -1,0 +1,17 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: kubeapi-to-external-secrets-webhook
+spec:
+  description: "Allow kubeapi to access the webhook"
+  endpointSelector:
+    matchLabels:
+      app.kubernetes.io/name: external-secrets-webhook
+  ingress:
+    - fromEntities:
+        - kube-apiserver
+        - remote-node
+      toPorts:
+        - ports:
+            - port: "10250"
+              protocol: "TCP"
