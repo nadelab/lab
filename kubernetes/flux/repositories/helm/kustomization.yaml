@@ -8,3 +8,4 @@ resources:
   - ./external-secrets.yaml
   - ./jetstack.yaml
   - ./metallb.yaml
+  - ./cnpg.yaml
