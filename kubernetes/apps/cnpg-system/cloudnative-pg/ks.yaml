@@ -11,7 +11,7 @@ spec:
     name: flux-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: flux-webhook
+      app.kubernetes.io/name: cloudnative-pg
   prune: false
   wait: true
   interval: 10m
