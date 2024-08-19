@@ -14,3 +14,4 @@ apt-get install -y containerd kubelet kubeadm kubectl
 
 modprobe br_netfilter
 echo '1' > /proc/sys/net/ipv4/ip_forward
+sudo sed -i.bak '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
