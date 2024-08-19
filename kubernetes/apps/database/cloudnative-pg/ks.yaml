@@ -9,7 +9,7 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: nadelab
+    name: lab-repository
   wait: true
   interval: 10m
   dependsOn:

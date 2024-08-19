@@ -10,7 +10,7 @@ spec:
   targetNamespace: storage
   sourceRef:
     kind: GitRepository
-    name: nadelab
+    name: lab-repository
   prune: true
   wait: true
   dependsOn:
