@@ -11,3 +11,4 @@ resources:
   - ./cnpg.yaml
   - ./democratic-csi.yaml
   - ./piraeus.yaml
+  - ./dragonfly.yaml
