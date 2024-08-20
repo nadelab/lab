@@ -12,3 +12,4 @@ resources:
   - ./democratic-csi.yaml
   - ./piraeus.yaml
   - ./dragonfly.yaml
+  - ./bjw-s.yaml
