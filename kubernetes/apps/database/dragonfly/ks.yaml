@@ -32,4 +32,4 @@ spec:
   interval: 10m
   dependsOn:
     - name: database-dragonfly
-    - name: storage-democratic-local-path
+    - name: storage-democratic-csi-local-path
