@@ -57,6 +57,12 @@ spec:
           hostPath:
             path: /var/lib/csi-local-hostpath
             type: DirectoryOrCreate
+
+      tolerations:
+        - key: role
+          operator: Equal
+          value: database
+          effect: NoSchedule
     controller:
       enabled: true
       strategy: node
