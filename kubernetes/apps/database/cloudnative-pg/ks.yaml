@@ -15,4 +15,4 @@ spec:
   dependsOn:
     - name: cnpg-system-cloudnative-pg
     - name: storage-democratic-csi-local-path
-    - name: security-secret-store
+    - name: database-secret-store
