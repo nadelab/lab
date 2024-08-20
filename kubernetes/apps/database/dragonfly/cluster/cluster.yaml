@@ -6,7 +6,7 @@ metadata:
   name: dragonfly
 spec:
   image: ghcr.io/dragonflydb/dragonfly:v1.21.2
-  replicas: 3
+  replicas: 1
   env:
     - name: MAX_MEMORY
       valueFrom:
@@ -30,19 +30,18 @@ spec:
       labelSelector:
         matchLabels:
           app.kubernetes.io/part-of: dragonfly
-  tolerations:
-    - key: "role"
-      operator: "Equal"
-      value: "database"
-      effect: "NoSchedule"
-
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
           - matchExpressions:
-              - key: "role"
-                operator: "In"
+              - key: role
+                operator: In
                 values:
-                  - "database"
+                  - database
+    tolerations:
+      - key: "role"
+        operator: "Equal"
+        value: "database"
+        effect: "NoSchedule"
   
