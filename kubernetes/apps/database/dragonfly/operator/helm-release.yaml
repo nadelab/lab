@@ -69,21 +69,6 @@ spec:
               readOnlyRootFilesystem: true
               capabilities: { drop: ["ALL"] }
         pod:
-          tolerations:
-            - key: "role"
-              operator: "Equal"
-              value: "database"
-              effect: "NoSchedule"
-
-          affinity:
-            nodeAffinity:
-              requiredDuringSchedulingIgnoredDuringExecution:
-                nodeSelectorTerms:
-                  - matchExpressions:
-                      - key: "role"
-                        operator: "In"
-                        values:
-                          - "database"
           securityContext:
             runAsUser: 65534
             runAsGroup: 65534

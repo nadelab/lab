@@ -30,18 +30,4 @@ spec:
       labelSelector:
         matchLabels:
           app.kubernetes.io/part-of: dragonfly
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-          - matchExpressions:
-              - key: role
-                operator: In
-                values:
-                  - database
-    tolerations:
-      - key: "role"
-        operator: "Equal"
-        value: "database"
-        effect: "NoSchedule"
   
