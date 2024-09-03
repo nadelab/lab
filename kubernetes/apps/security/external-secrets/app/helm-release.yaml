@@ -20,28 +20,12 @@ spec:
   values:
     installCRDs: true
     replicaCount: 1
-    topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app.kubernetes.io/name: external-secrets
-            app.kubernetes.io/instance: external-secrets
     leaderElect: true
     serviceMonitor:
       enabled: true
       interval: 1m
     webhook:
-      replicaCount: 2
-      topologySpreadConstraints:
-        - maxSkew: 1
-          topologyKey: kubernetes.io/hostname
-          whenUnsatisfiable: DoNotSchedule
-          labelSelector:
-            matchLabels:
-              app.kubernetes.io/name: external-secrets-cert-controller
-              app.kubernetes.io/instance: external-secrets
+      replicaCount: 1
       serviceMonitor:
         enabled: true
         interval: 1m
