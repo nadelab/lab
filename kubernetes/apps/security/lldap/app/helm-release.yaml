@@ -39,7 +39,7 @@ spec:
       targetPath: "externalPostgresql.auth.database"
     - kind: Secret
       name: lldap-secret
-      valuesKey: DATABASE_USERNAME
+      valuesKey: DATABASE_USER
       targetPath: "externalPostgresql.auth.username"
     - kind: Secret
       name: lldap-secret
