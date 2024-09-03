@@ -5,6 +5,7 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: "OnFailure"
       containers:
         - name: postgres-init
           image: ghcr.io/onedr0p/postgres-init:16.3
