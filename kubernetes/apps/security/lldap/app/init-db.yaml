@@ -14,17 +14,17 @@ spec:
           env:
             - name: INIT_POSTGRES_USER
               valueFrom:
-                - secretKeyRef:
-                    key: DATABASE_USER
-                    name: lldap-secret
+                secretKeyRef:
+                  key: DATABASE_USER
+                  name: lldap-secret
             - name: INIT_POSTGRES_PASS
               valueFrom:
-                - secretKeyRef:
-                    key: DATABASE_PASSWORD
-                    name: lldap-secret
+                secretKeyRef:
+                  key: DATABASE_PASSWORD
+                  name: lldap-secret
             - name: INIT_POSTGRES_DBNAME
               valueFrom:
-                - secretKeyRef:
+                  secretKeyRef:
                     key: DATABASE_NAME
                     name: lldap-secret
             - name: INIT_POSTGRES_HOST
