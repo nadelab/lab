@@ -23,6 +23,7 @@ spec:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-production
+        ingress.cilium.io/loadbalancer-mode: shared
       hosts:
         - host: lldap.space.nade.me
           paths:
