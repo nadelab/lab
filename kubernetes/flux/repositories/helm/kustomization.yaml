@@ -13,3 +13,4 @@ resources:
   - ./piraeus.yaml
   - ./dragonfly.yaml
   - ./bjw-s.yaml
+  - ./djjudas21.yaml
