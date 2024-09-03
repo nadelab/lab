@@ -5,3 +5,4 @@ resources:
   - ./external-secrets/ks.yaml
   - ./sealed-secrets/ks.yaml
   - ./infisical/ks.yaml
+  - ./lldap/ks.yaml
