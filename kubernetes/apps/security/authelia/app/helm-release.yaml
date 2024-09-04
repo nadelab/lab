@@ -37,11 +37,12 @@ spec:
               use: "sig"
               algorithm: "RS256"
           clients:
+            # Not used in any way but Authelia helm chart requires one or more clients, plain text will do fine job ugh
             - client_id: "default"
               authorization_policy: "one_factor"
               client_name: "Default Application"
               client_secret:
-                value: "default"
+                value: "$pbkdf2-sha512$310000$eDtB3EO5skFQItYupBfpIg$fTju9Y9G/5LGpNBnjepcVvvxh6s2.rFqKIGtj0vtHr5Rzf.JcZeQOjvfXuYxKGEHH22YZqp.LPDAXqMDwoB9Ow"
       access_control:
         default_policy: "one_factor"
       authentication_backend:
