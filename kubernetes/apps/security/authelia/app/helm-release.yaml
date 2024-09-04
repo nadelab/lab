@@ -46,9 +46,10 @@ spec:
             path: /
       rbac:
         enabled: true
-      cookies:
-        - subdomain: auth
-          domain: "nade.me"
+      session:
+        cookies:
+          - subdomain: auth
+            domain: "nade.me"
       storage:
         postgres:
           enabled: true
