@@ -29,6 +29,10 @@ spec:
         - host: "auth.nade.me"
           path: /
     configMap:
+      webauthn:
+        disable: true
+      totp:
+        issuer: "Nadespace"
       authentication_backend:
         password_reset:
           disable: false
