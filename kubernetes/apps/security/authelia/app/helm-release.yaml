@@ -29,8 +29,15 @@ spec:
         - host: "auth.nade.me"
           path: /
     configMap:
-      totp:
-        issuer: "Nadespace"
+      identity_providers:
+        oidc:
+          enabled: true
+          authorization_policies:
+            no_2fa:
+              default_policy: "one_factor"
+              rules: []
+      access_control:
+        default_policy: "one_factor"
       authentication_backend:
         password_reset:
           disable: false
