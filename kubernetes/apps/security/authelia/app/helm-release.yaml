@@ -31,24 +31,34 @@ spec:
             username: uid
             group_name: cn
             mail: mail
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        ingress.cilium.io/loadbalancer-mode: shared
-      tls:
+      ingress:
         enabled: true
-        secret: authelia-ui-tls
-        hostNameOverride: "auth.nade.me"
-      rulesOverride:
-        - host: "auth.nade.me"
-          path: /
-    rbac:
-      enabled: true
-    storage:
-      postgres:
+        annotations:
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          ingress.cilium.io/loadbalancer-mode: shared
+        tls:
+          enabled: true
+          secret: authelia-ui-tls
+          hostNameOverride: "auth.nade.me"
+        rulesOverride:
+          - host: "auth.nade.me"
+            path: /
+      rbac:
         enabled: true
-        address: "tcp://postgres-rw.database.svc.cluster.local:5432"
+      cookies:
+        - subdomain: auth
+          domain: "nade.me"
+      storage:
+        postgres:
+          enabled: true
+          address: "tcp://postgres-rw.database.svc.cluster.local:5432"
+        redis:
+          enabled: true
+          host: "dragonfly.database.svc.cluster.local"
+          port: 6379
+      notifier:
+        filesystem:
+          enabled: true
   valuesFrom:
     - kind: Secret
       name: authelia-secret
@@ -57,20 +67,20 @@ spec:
     - kind: Secret
       name: authelia-secret
       valuesKey: DATABASE_NAME
-      targetPath: "storage.postgres.database"
+      targetPath: "configMap.storage.postgres.database"
     - kind: Secret
       name: authelia-secret
       valuesKey: DATABASE_USER
-      targetPath: "storage.postgres.username"
+      targetPath: "configMap.storage.postgres.username"
     - kind: Secret
       name: authelia-secret
       valuesKey: DATABASE_PASSWORD
-      targetPath: "storage.postgres.password.value"
+      targetPath: "configMap.storage.postgres.password.value"
     - kind: Secret
       name: authelia-secret
       valuesKey: LDAP_BIND_USER
-      targetPath: "configMap.authentication_backend.ldap.user"
+      targetPath: "configMap.configMap.authentication_backend.ldap.user"
     - kind: Secret
       name: authelia-secret
       valuesKey: LDAP_BIND_PASSWORD
-      targetPath: "configMap.authentication_backend.ldap.password.value"
+      targetPath: "configMap.configMap.authentication_backend.ldap.password.value"
