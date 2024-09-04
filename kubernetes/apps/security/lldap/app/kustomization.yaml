@@ -4,5 +4,4 @@ resources:
   - ./init-db.yaml
   - ./secret-store.yaml
   - ./external-secret-lldap.yaml
-  - ./external-secret-postgres.yaml
   - ./helm-release.yaml
