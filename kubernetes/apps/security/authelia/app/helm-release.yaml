@@ -16,6 +16,18 @@ spec:
         namespace: flux-system
   interval: 30m
   values:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        ingress.cilium.io/loadbalancer-mode: shared
+      tls:
+        enabled: true
+        secret: authelia-ui-tls
+        hostNameOverride: "auth.nade.me"
+      rulesOverride:
+        - host: "auth.nade.me"
+          path: /
     configMap:
       authentication_backend:
         password_reset:
@@ -33,18 +45,6 @@ spec:
             username: uid
             group_name: cn
             mail: mail
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-production
-        ingress.cilium.io/loadbalancer-mode: shared
-      tls:
-        enabled: true
-        secret: authelia-ui-tls
-        hostNameOverride: "auth.nade.me"
-      rulesOverride:
-        - host: "auth.nade.me"
-          path: /
       rbac:
         enabled: true
       session:
