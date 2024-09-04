@@ -40,7 +40,7 @@ spec:
         enabled: true
         secret: authelia-ui-tls
         hostNameOverride: "auth.nade.me"
-      hostOverride:
+      rulesOverride:
         - host: "auth.nade.me"
           path: /
     rbac:
