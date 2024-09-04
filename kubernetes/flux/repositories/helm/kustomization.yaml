@@ -14,3 +14,4 @@ resources:
   - ./dragonfly.yaml
   - ./bjw-s.yaml
   - ./djjudas21.yaml
+  - ./authelia.yaml

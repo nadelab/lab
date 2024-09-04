@@ -1,0 +1,76 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authelia
+  namespace: flux-system
+spec:
+  chart:
+    spec:
+      chart: authelia
+      version: 0.9.5
+      sourceRef:
+        kind: HelmRepository
+        name: authelia
+        namespace: flux-system
+  interval: 30m
+  values:
+    configMap:
+      authentication_backend:
+        password_reset:
+          disable: false
+        ldap:
+          enabled: true
+          base_dn: "dc=example,dc=com"
+          additional_users_dn: "ou=people"
+          users_filter: "(&({username_attribute}={input})(objectClass=person))"
+          additional_groups_dn: "ou=groups"
+          groups_filter: "(member={dn})"
+          attributes:
+            display_name: displayName
+            username: uid
+            group_name: cn
+            mail: mail
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-production
+        ingress.cilium.io/loadbalancer-mode: shared
+      tls:
+        enabled: true
+        secret: authelia-ui-tls
+        hostNameOverride: "auth.nade.me"
+      hostOverride:
+        - host: "auth.nade.me"
+          path: /
+    rbac:
+      enabled: true
+    storage:
+      postgres:
+        enabled: true
+        address: "tcp://postgres-rw.database.svc.cluster.local:5432"
+  valuesFrom:
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: LDAP_BACKEND_URL
+      targetPath: "configMap.authentication_backend.ldap.address"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: DATABASE_NAME
+      targetPath: "storage.postgres.database"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: DATABASE_USER
+      targetPath: "storage.postgres.username"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: DATABASE_PASSWORD
+      targetPath: "storage.postgres.password.value"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: LDAP_BIND_USER
+      targetPath: "configMap.authentication_backend.ldap.user"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: LDAP_BIND_PASSWORD
+      targetPath: "configMap.authentication_backend.ldap.password.value"

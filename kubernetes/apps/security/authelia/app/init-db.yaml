@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lldap-init-db
+spec:
+  template:
+    spec:
+      restartPolicy: "OnFailure"
+      containers:
+        - name: postgres-init
+          image: ghcr.io/onedr0p/postgres-init:16.3
+          envFrom:
+            - secretRef:
+                name: database-superuser-secret
+          env:
+            - name: INIT_POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: DATABASE_USER
+                  name: authelia-secret
+            - name: INIT_POSTGRES_PASS
+              valueFrom:
+                secretKeyRef:
+                  key: DATABASE_PASSWORD
+                  name: authelia-secret
+            - name: INIT_POSTGRES_DBNAME
+              valueFrom:
+                  secretKeyRef:
+                    key: DATABASE_NAME
+                    name: authelia-secret
+            - name: INIT_POSTGRES_HOST
+              value: postgres-rw.database.svc.cluster.local

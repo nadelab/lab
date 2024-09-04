@@ -6,3 +6,4 @@ resources:
   - ./sealed-secrets/ks.yaml
   - ./infisical/ks.yaml
   - ./lldap/ks.yaml
+  - ./authelia/ks.yaml
