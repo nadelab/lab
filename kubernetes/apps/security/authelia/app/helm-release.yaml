@@ -32,10 +32,14 @@ spec:
       identity_providers:
         oidc:
           enabled: true
-          authorization_policies:
-            no_2fa:
-              default_policy: "one_factor"
-              rules: []
+          jwks:
+            - key_id: "default"
+              use: "sig"
+              algorithm: "RS256"
+          clients:
+            - client_id: "default"
+              authorization_policy: "one_factor"
+              client_name: "Default Application"
       access_control:
         default_policy: "one_factor"
       authentication_backend:
@@ -96,3 +100,11 @@ spec:
       name: authelia-secret
       valuesKey: LDAP_BIND_PASSWORD
       targetPath: "configMap.authentication_backend.ldap.password.value"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: OIDC_CERT_PRIVATE_KEY
+      targetPath: "configMap.oidc.jwks[0].key"
+    - kind: Secret
+      name: authelia-secret
+      valuesKey: OIDC_CERT_CERTIFICATE
+      targetPath: "configMap.oidc.jwks[0].certificate_chain"
