@@ -5,6 +5,7 @@ metadata:
   name: authelia
   namespace: flux-system
 spec:
+  timeout: 1h
   chart:
     spec:
       chart: authelia
