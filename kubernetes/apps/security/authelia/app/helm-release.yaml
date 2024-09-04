@@ -16,6 +16,20 @@ spec:
         namespace: flux-system
   interval: 30m
   values:
+    pod:
+      extraVolumeMounts:
+        - mountPath: "/external/secrets"
+          name: jwk
+          readOnly: true
+      extraVolumes:
+        - name: jwk
+          secret:
+            secretName: authelia-secret
+            items:
+              - key: OIDC_CERT_CERTIFICATE
+                path: "oidc.jwk.RS256.crt"
+              - key: OIDC_CERT_PRIVATE_KEY
+                path: "oidc.jwk.RS256.pem"
     ingress:
       enabled: true
       annotations:
@@ -36,6 +50,10 @@ spec:
             - key_id: "default"
               use: "sig"
               algorithm: "RS256"
+              key:
+                path: "/external/secrets/oidc.jwk.RS256.pem"
+              certificate_chain:
+                path: "/external/secrets/oidc.jwk.RS256.crt"
           clients:
             # Not used in any way but Authelia helm chart requires one or more clients, plain text will do fine job ugh
             - client_id: "default"
@@ -103,11 +121,3 @@ spec:
       name: authelia-secret
       valuesKey: LDAP_BIND_PASSWORD
       targetPath: "configMap.authentication_backend.ldap.password.value"
-    - kind: Secret
-      name: authelia-secret
-      valuesKey: OIDC_CERT_PRIVATE_KEY
-      targetPath: "configMap.oidc.jwks[0].key"
-    - kind: Secret
-      name: authelia-secret
-      valuesKey: OIDC_CERT_CERTIFICATE
-      targetPath: "configMap.oidc.jwks[0].certificate_chain"
