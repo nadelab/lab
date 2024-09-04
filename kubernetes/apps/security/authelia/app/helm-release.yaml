@@ -21,6 +21,7 @@ spec:
         password_reset:
           disable: false
         ldap:
+          implementation: custom
           enabled: true
           base_dn: "dc=example,dc=com"
           additional_users_dn: "ou=people"
@@ -81,8 +82,8 @@ spec:
     - kind: Secret
       name: authelia-secret
       valuesKey: LDAP_BIND_USER
-      targetPath: "configMap.configMap.authentication_backend.ldap.user"
+      targetPath: "configMap.authentication_backend.ldap.user"
     - kind: Secret
       name: authelia-secret
       valuesKey: LDAP_BIND_PASSWORD
-      targetPath: "configMap.configMap.authentication_backend.ldap.password.value"
+      targetPath: "configMap.authentication_backend.ldap.password.value"
