@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: lldap-init-db
+  name: authelia-init-db
 spec:
   template:
     spec:
