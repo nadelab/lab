@@ -76,8 +76,8 @@ spec:
               client_secret:
                 path: "/external/oidc-secrets/gpt-next.txt"
               redirect_uris:
-                - "http://localhost:3000" # local debug url
-                - "https://chat.space.nade.me" # "production" per se
+                - "http://localhost:3000/api/auth/callback/openid" # local debug url
+                - "https://chat.space.nade.me/api/auth/callback/openid" # "production" per se
       access_control:
         default_policy: "one_factor"
       authentication_backend:
