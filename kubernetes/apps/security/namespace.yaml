@@ -4,3 +4,5 @@ metadata:
   name: security
   labels:
     kustomize.toolkit.fluxcd.io/prune: disabled
+    need-oidc-secrets: true
+    need-database-secrets: true
