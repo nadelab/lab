@@ -38,7 +38,7 @@ spec:
             secretName: oidc-applications-secret
             items:
               - key: GPT_NEXT_CLIENT_SECRET
-                path: "oidc.gpt-next.secret.txt"
+                path: "gpt-next.txt"
     ingress:
       enabled: true
       annotations:
@@ -73,6 +73,8 @@ spec:
             - client_id: "gpt-next"
               authorization_policy: "one_factor"
               client_name: "GPT Next"
+              client_secret:
+                path: "/external/oidc-secrets/gpt-next.txt"
               redirect_uris:
                 - "http://localhost:3000" # local debug url
                 - "https://chat.space.nade.me" # "production" per se
