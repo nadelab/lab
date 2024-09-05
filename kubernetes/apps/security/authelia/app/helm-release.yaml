@@ -21,6 +21,9 @@ spec:
         - mountPath: "/external/secrets"
           name: jwk
           readOnly: true
+        - mountPath: "/external/oidc-secrets"
+          name: oidc-secrets
+          readOnly: true
       extraVolumes:
         - name: jwk
           secret:
@@ -30,6 +33,12 @@ spec:
                 path: "oidc.jwk.RS256.crt"
               - key: OIDC_CERT_PRIVATE_KEY
                 path: "oidc.jwk.RS256.pem"
+        - name: oidc-secrets
+          secret:
+            secretName: oidc-applications-secret
+            items:
+              - key: GPT_NEXT_CLIENT_SECRET
+                path: "oidc.gpt-next.secret.txt"
     ingress:
       enabled: true
       annotations:
@@ -61,6 +70,12 @@ spec:
               client_name: "Default Application"
               client_secret:
                 value: "$pbkdf2-sha512$310000$eDtB3EO5skFQItYupBfpIg$fTju9Y9G/5LGpNBnjepcVvvxh6s2.rFqKIGtj0vtHr5Rzf.JcZeQOjvfXuYxKGEHH22YZqp.LPDAXqMDwoB9Ow"
+            - client_id: "gpt-next"
+              authorization_policy: "one_factor"
+              client_name: "GPT Next"
+              redirect_uris:
+                - "http://localhost:3000" # local debug url
+                - "https://chat.space.nade.me" # "production" per se
       access_control:
         default_policy: "one_factor"
       authentication_backend:

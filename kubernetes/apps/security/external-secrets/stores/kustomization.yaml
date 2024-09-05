@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ./cluster-secret-store.yaml
   - ./cloudflare-secret-store.yaml
+  - ./oidc-applications-secret-store.yaml
