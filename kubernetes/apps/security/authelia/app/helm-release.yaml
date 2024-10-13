@@ -70,14 +70,19 @@ spec:
               client_name: "Default Application"
               client_secret:
                 value: "$pbkdf2-sha512$310000$eDtB3EO5skFQItYupBfpIg$fTju9Y9G/5LGpNBnjepcVvvxh6s2.rFqKIGtj0vtHr5Rzf.JcZeQOjvfXuYxKGEHH22YZqp.LPDAXqMDwoB9Ow"
-            - client_id: "gpt-next"
+            - client_id: "lobe-chat"
+              client_name: "LobeChat"
               authorization_policy: "one_factor"
-              client_name: "GPT Next"
               client_secret:
-                path: "/external/oidc-secrets/gpt-next.txt"
+                value: "$argon2id$v=19$m=65536,t=3,p=4$p5pg3D1a7hF8MGz9hSMBaQ$JaTcO2wre4fDLKY12qyyUyyEaCs9oAmSWFzOkLbDqQ0"
+              public: false
               redirect_uris:
-                - "http://localhost:3000/api/auth/callback/openid" # local debug url
-                - "https://chat.space.nade.me/api/auth/callback/openid" # "production" per se
+                - https://chat.space.nade.me/api/auth/callback/authelia
+              scopes:
+                - openid
+                - profile
+                - email
+              userinfo_signing_algorithm: none
       access_control:
         default_policy: "one_factor"
       authentication_backend:
