@@ -82,7 +82,6 @@ spec:
                 - openid
                 - profile
                 - email
-              userinfo_signing_algorithm: none
       access_control:
         default_policy: "one_factor"
       authentication_backend:

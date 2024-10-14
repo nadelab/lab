@@ -36,6 +36,8 @@ spec:
           hosts:
             - chat.space.nade.me
     env:
+      - name: NEXT_PUBLIC_ENABLE_NEXT_AUTH
+        value: "true"
       - name: NEXT_AUTH_SSO_PROVIDERS
         value: "authelia"
       - name: AUTH_AUTHELIA_ISSUER
@@ -44,7 +46,7 @@ spec:
         value: "https://chat.space.nade.me"
       - name: NEXTAUTH_URL
         value: "https://chat.space.nade.me/api/auth"
-      - name: AUTH_AUTHELIA_CLIENT_ID
+      - name: AUTH_AUTHELIA_ID
         value: "lobe-chat"
       - name: NEXT_PUBLIC_SERVICE_MODE
         value: "server"
