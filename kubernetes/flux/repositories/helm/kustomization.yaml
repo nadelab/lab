@@ -9,6 +9,7 @@ resources:
   - ./jetstack.yaml
   - ./metallb.yaml
   - ./cnpg.yaml
+  - ./darox.yaml
   - ./democratic-csi.yaml
   - ./piraeus.yaml
   - ./dragonfly.yaml
