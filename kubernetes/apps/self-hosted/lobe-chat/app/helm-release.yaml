@@ -36,6 +36,10 @@ spec:
           hosts:
             - chat.space.nade.me
     env:
+      - name: ENABLED_OPENAI
+        value: "0"
+      - name: ENABLED_OLLAMA
+        value: "0"
       - name: NEXT_PUBLIC_ENABLE_NEXT_AUTH
         value: "true"
       - name: NEXT_AUTH_SSO_PROVIDERS
@@ -44,6 +48,8 @@ spec:
         value: "https://auth.nade.me"
       - name: APP_URL
         value: "https://chat.space.nade.me"
+      - name: AUTH_URL
+        value: "https://chat.space.nade.me/api/auth"
       - name: NEXTAUTH_URL
         value: "https://chat.space.nade.me/api/auth"
       - name: AUTH_AUTHELIA_ID
