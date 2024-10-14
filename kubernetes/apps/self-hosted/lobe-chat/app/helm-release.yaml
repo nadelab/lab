@@ -36,7 +36,7 @@ spec:
             - chat.space.nade.me
     env:
       - name: NEXT_AUTH_SSO_PROVIDERS
-        value: "authelia"
+        value: "authentik"
       - name: AUTH_AUTHELIA_ISSUER
         value: "https://auth.nade.me"
       - name: AUTH_AUTHELIA_ID
