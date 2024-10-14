@@ -18,7 +18,7 @@ spec:
   values:
     replicaCount: 1
     image:
-      repository: lobehub/lobe-chat
+      repository: lobehub/lobe-chat-database
       pullPolicy: Always
       tag: "v1.22.6"
     ingress:
