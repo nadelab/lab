@@ -26,6 +26,11 @@ spec:
   storage:
     size: 15Gi
     storageClass: local-path
+  bootstrap:
+    initdb:
+      postInitSQL:
+        - ALTER SYSTEM SET search_path TO "$user", public, vectors;
+        - CREATE EXTENSION IF NOT EXISTS "vectors";
   postgresql:
     shared_preload_libraries: ["vectors.so"]
     parameters:
