@@ -42,6 +42,8 @@ spec:
         value: "https://auth.nade.me"
       - name: APP_URL
         value: "https://chat.space.nade.me"
+      - name: NEXTAUTH_URL
+        value: "https://chat.space.nade.me/api/auth"
       - name: AUTH_AUTHELIA_CLIENT_ID
         value: "lobe-chat"
       - name: NEXT_PUBLIC_SERVICE_MODE
@@ -50,3 +52,11 @@ spec:
         value: "postgres://$(DATABASE_USER):$(DATABASE_PASSWORD)@postgres-rw.database.svc.cluster.local:5432/$(DATABASE_NAME)"
 
     envFromSecret: lobe-chat-secret
+
+    volumes:
+      - name: app-cache
+        emptyDir: {}
+
+    volumeMounts:
+      - name: app-cache
+        mountPath: "/app/.next/cache"
