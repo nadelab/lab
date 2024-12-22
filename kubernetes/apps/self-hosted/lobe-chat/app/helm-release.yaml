@@ -20,7 +20,7 @@ spec:
     image:
       repository: lobehub/lobe-chat-database
       pullPolicy: Always
-      tag: "v1.29.6"
+      tag: "v1.37.2"
     ingress:
       enabled: true
       annotations:
